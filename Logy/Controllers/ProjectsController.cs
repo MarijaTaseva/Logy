@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Logy.Models;
@@ -20,31 +18,11 @@ namespace Logy.Controllers
             _context = context;
         }
 
-        public string Index()
-        {
-            return "This is my default action...";
-        }
-
-        // 
-        // GET: /HelloWorld/Welcome/ 
-
-        public string Welcome()
-        {
-            return "This is the Welcome action method...";
-        }
-
-        // GET: api/Projects
         [HttpGet]
-        public IActionResult Get()
+        public IEnumerable<Project> GetProject()
         {
-            return View("~/Pages/Projects/Index.cshtml");
+            return _context.Project;
         }
-
-        //[HttpGet]
-        //public IEnumerable<Project> GetProject()
-        //{
-        //    return _context.Project;
-        //}
 
         // GET: api/Projects/5
         [HttpGet("{id}")]
